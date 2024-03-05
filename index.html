@@ -1,60 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multi-Step Form</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .step-box {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Information Form</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+      .step-box.active {
+        display: block;
+      }
 
-<body>
+      .step-box.hidden {
+        display: none;
+      }
+    </style>
+  </head>
 
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Personal Information Form</h1>
-        <form id="form">
-            <div class="mb-3">
-                <label for="name" class="form-label">Ismi (First Name):</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter your first name">
-            </div>
-            <div class="mb-3">
-                <label for="last_name" class="form-label">Familiyasi (Last Name):</label>
-                <input type="text" class="form-control" id="last_name" placeholder="Enter your last name" required>
-            </div>
-            <div class="mb-3">
-                <label for="father_name" class="form-label">Otasining Ismi (Father's Name):</label>
-                <input type="text" class="form-control" id="father_name" placeholder="Enter your father's name">
-            </div>
-            <div class="mb-3">
-                <label for="education" class="form-label">Malumoti (Education):</label>
-                <input type="text" class="form-control" id="education" placeholder="Enter your education level">
-            </div>
-            <button type="submit" class="btn btn-primary" id="order">Tasdiqlash</button>
-        </form>
+  <body>
+    <div class="container">
+      <h1 class="text-center mb-4">Multi-Step Form</h1>
+      <form id="multiStepForm">
+        <div class="step-box active" id="step1">
+          <h2>Step 1: Personal Information</h2>
+          <div class="mb-3">
+            <label for="inputFirstName" class="form-label">FIO:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputFirstName"
+              placeholder="Familiya Ism Otangiz ismi"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="inputBirthDate" class="form-label"
+              >Tugulgan sanangiz:</label
+            >
+            <input type="date" class="form-control" id="inputBirthDate" />
+          </div>
+          <div class="mb-3">
+            <label for="inputLocation" class="form-label">Manzilingiz:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputLocation"
+              placeholder="Shahar, ko'cha, uy, xonadon "
+            />
+          </div>
+          <div class="mb-3">
+            <label for="inputPhoneNum" class="form-label">Tel:</label>
+            <input type="tel" class="form-control" id="inputPhoneNum" />
+          </div>
+          <button class="btn btn-primary next-btn" data-step="step2">
+            Next
+          </button>
+        </div>
+        <div class="step-box hidden" id="step2">
+          <h2>Step 2: Ma'lumotingiz</h2>
+          <div class="mb-3">
+            <label for="inputSelectEducation" class="form-label"
+              >Ma'lumotingiz:</label
+            >
+            <select name="cars" id="inputSelectEducation" class="form-control">
+              <option value="volvo">O'rta (maktab)</option>
+              <option value="saab">O'rta-maxsus (litsey | kollej)</option>
+              <option value="mercedes">Oliy (bakalavriat)</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="inputIsStudying" class="form-label"
+              >Hozir ham o'qishingiz:</label
+            >
+            <select name="cars" id="inputIsStudying" class="form-control">
+              <option value="yes_student">Ha</option>
+              <option value="no_student">Yo'q</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="startTime">Boshlanish vaqti:</label>
+            <input type="time" id="startTime" name="startTime" />
+
+            <label for="endTime">Togash vaqti:</label>
+            <input type="time" id="endTime" name="endTime" />
+          </div>
+          <div class="mb-3">
+            <label for="inputSelectEducation" class="form-label"
+              >Ish tajribangiz kiriting:</label
+            >
+            <select name="cars" id="inputSelectEducation" class="form-control">
+              <option value="volvo">Yo'q</option>
+              <option value="saab">0-1 yil</option>
+              <option value="mercedes">2-5 yil</option>
+            </select>
+          </div>
+          <button class="btn btn-primary prev-btn mr-3" data-step="step1">
+            Previous
+          </button>
+          <button class="btn btn-primary next-btn" data-step="step3">
+            Next
+          </button>
+        </div>
+        <div class="step-box hidden" id="step3">
+          <h2>Step 3: Education Information</h2>
+          <div class="mb-3">
+            <label for="inputEducation" class="form-label"
+              >Malumoti (Education):</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="inputEducation"
+              placeholder="Enter your education level"
+            />
+          </div>
+          <button class="btn btn-primary prev-btn mr-3" data-step="step2">
+            Previous
+          </button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
     </div>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
-        let tg = window.Telegram.WebApp;
-        let buy = document.getElementById('buyId')
-        let order = document.getElementById('order')
-        order.addEventListener('click', () => {
-            let name = document.getElementById('name').value;
-            let last = document.getElementById("last_name").value;
-            let father = document.getElementById("father_name").value;
-            let edu = document.getElementById("education").value;
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("multiStepForm");
+        const steps = form.querySelectorAll(".step-box");
+        const nextBtns = form.querySelectorAll(".next-btn");
+        const prevBtns = form.querySelectorAll(".prev-btn");
 
-            let data = {
-                name: name,
-                last_name: last,
-                father_name: father,
-                education: edu
-            };
-            tg.sendData(JSON.stringify(data));
-            tg.close();
-        })
+        nextBtns.forEach(function (btn) {
+          btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            const currentStep = btn.closest(".step-box");
+            const nextStepId = btn.dataset.step;
+            const nextStep = form.querySelector("#" + nextStepId);
+            currentStep.classList.remove("active");
+            currentStep.classList.add("hidden");
+            nextStep.classList.remove("hidden");
+            nextStep.classList.add("active");
+          });
+        });
+
+        prevBtns.forEach(function (btn) {
+          btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            const currentStep = btn.closest(".step-box");
+            const prevStepId = btn.dataset.step;
+            const prevStep = form.querySelector("#" + prevStepId);
+            currentStep.classList.remove("active");
+            currentStep.classList.add("hidden");
+            prevStep.classList.remove("hidden");
+            prevStep.classList.add("active");
+          });
+        });
+      });
+
+      $(document).ready(function () {
+        $("#inputPhoneNum").on("input", phoneMask);
+      });
+
+      const startTimeInput = document.getElementById("startTime");
+      const endTimeInput = document.getElementById("endTime");
+
+      function validateTime() {
+        const startTime = new Date(`2000-01-01T${startTimeInput.value}`);
+        const endTime = new Date(`2000-01-01T${endTimeInput.value}`);
+
+        if (startTime >= endTime) {
+          alert("Start time must be less than end time");
+          startTimeInput.value = ""; // Clearing the start time value
+        }
+      }
+
+      startTimeInput.addEventListener("input", validateTime);
+      endTimeInput.addEventListener("input", validateTime);
     </script>
-
-</body>
-
+  </body>
 </html>
