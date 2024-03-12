@@ -238,6 +238,7 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         let tg = window.Telegram.WebApp;
+        tg.expand();
         document.addEventListener("DOMContentLoaded", function() {
             const form = document.getElementById("multiStepForm");
             const steps = form.querySelectorAll(".step-box");
