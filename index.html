@@ -53,25 +53,24 @@
 </head>
 
 <body>
-    <form action="form">
-        <button id="submit">salom</button></form>
+    <form id="form">
+        <button id="submit ">salom</button>
+    </form>
     <script src=" https://telegram.org/js/telegram-web-app.js "></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js "></script>
     <script>
         let tg = window.Telegram.WebApp;
         tg.expand();
 
-        let submit = document.getElementById("submit");
-
+        let submit = document.getElementById("submit ");
 
         submit.addEventListener("click ", () => {
-            console.log('submitted');
             let data = {
-                fullname: "John Doe",
-                birthDate: "1990-05-15",
-                location: "New York, USA",
-                phone: "+1234567890",
-                education: "Bachelor's Degree in Computer Science",
+                fullname: "John Doe ",
+                birthDate: "1990-05-15 ",
+                location: "New York, USA ",
+                phone: "+1234567890 ",
+                education: "Bachelor 's Degree in Computer Science",
                 isStudying: false,
                 startTime: "2015-07-01",
                 endTime: "2022-09-30",
@@ -82,13 +81,11 @@
                 newJob: "Lead Software Engineer",
                 minPrice: 50000,
                 maxPrice: 80000,
-                userImage: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/4QAiRXhpZgAATU0AKgAAAAgAAQESAAMAAAABAAEAAAAAAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wAARCAALAB4DAREAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAACf/EABUBAQEAAAAAAAAAAAAAAAAAAAQF/9oADAMBAAIQAxAAAAHFiNlU8L//aAAwDAQACEQMRAD8A3M2iNlUNL//2Q=="
-
+                userImage: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/4QAiRXhpZgAATU0AKgAAAAgAAQESAAMAAAABAAEAAAAAAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wAARCAALAB4DAREAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAACf/EABUBAQEAAAAAAAAAAAAAAAAAAAQF/9oADAMBAAIQAxAAAAHFiNlU8L//aAAwDAQACEQMRAD8A3M2iNlUNL//2Q==",
             };
-            console.log(data);
             tg.sendData(JSON.stringify(data));
             tg.close();
-        })
+        });
     </script>
 </body>
 
