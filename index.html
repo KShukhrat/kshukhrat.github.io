@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Osiyo HR</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .step-box {
             border: 1px solid #ccc;
@@ -53,40 +54,389 @@
 </head>
 
 <body>
-    <form id="form">
-        <button id="submit">salom</button>
-    </form>
+    <div class="container">
+        <div class="logo-text-container">
+            <img src="logo_osiyo.png" alt="Logo" />
+            <!-- <h1>Osiyo HR</h1> -->
+        </div>
+        <form id="multiStepForm" form="form">
+            <!-- Personal info - START -->
+            <div class="step-box active" id="step1">
+                <h2>Shaxsiy ma'lumot :</h2>
+                <div class="mb-3">
+                    <label for="inputFirstName" class="form-label">FIO:</label>
+                    <input type="text" class="form-control" id="inputFirstName" placeholder="Familiya Ism Otangizni ismi" required />
+                </div>
+                <div class="mb-3">
+                    <label for="inputBirthDate" class="form-label">Tug'ulgan sanangiz:</label
+            >
+            <input
+              type="date"
+              class="form-control"
+              id="inputBirthDate"
+              required
+            />
+          </div>
+          <div class="mb-3">
+                    <label for="inputLocation" class="form-label">Manzilingiz:</label>
+                    <input type="text" class="form-control" id="inputLocation" placeholder="Shahar, ko'cha, uy, xonadon " required />
+                </div>
+                <!-- <div class="mb-3">
+                    <label for="userImage" class="form-label">Rasmingizni yuklang:</label>
+                    <div class="input-group">
+                        <input type="file" class="form-control" id="userImage" accept=".jpg, .jpeg, .png" required>
+                        <div class="input-group-append">
+                        </div>
+                    </div>
+                </div> -->
+                <div class="mb-3">
+                    <label for="inputPhoneNum" class="form-label">Tel:</label>
+                    <div class="input-group">
+                        <span class="input-group-text">+998</span>
+                        <input type="tel" class="form-control" id="inputPhoneNum" maxlength="12" pattern="[0-9]{2} [0-9]{3} [0-9]{2} [0-9]{2}" placeholder="99 999 99 99" required />
+                    </div>
+                    <div class="invalid-feedback">
+                        Iltimos telifon raqamingizni to'gri kiriting (99 999 99 99).
+                    </div>
+                </div>
+                <button class="btn btn-primary next-btn w-100" data-step="step2" type="button">Oldinga</button>
+            </div>
+            <!-- Personal info - END -->
+
+            <!-- Education - START -->
+            <div class="step-box hidden" id="step2">
+                <h2>Ma'lumotingiz</h2>
+                <div class="mb-3">
+                    <label for="inputSelectEducation" class="form-label">Ma'lumotingiz:</label
+            >
+            <select name="education" id="inputSelectEducation" class="form-control">
+              <option value="O'rta">O'rta (maktab)</option>
+              <option value="O'rta-maxsus (litsey | kollej)" selected>O'rta-maxsus (litsey | kollej)</option>
+              <option value="Oliy (bakalavr)">Oliy (bakalavr)</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="inputIsStudying" class="form-label"
+              >Hozir ham o'qishingiz:</label
+            >
+            <select
+              name="isStudying"
+              id="inputIsStudying"
+              class="form-control"
+              onchange="toggleTimeInputs()"
+            >
+              <option value="ha" selected>Ha</option>
+              <option value="yo'q">Yo'q</option>
+            </select>
+          </div><div id="timeInputs" class="mb-3" style="display: block">
+            <label for="startTime2" class="form-label">Boshlanish vaqti:</label>
+                    <input type="time" id="startTime2" class="form-control" name="startTime" required />
+                    <label for="endTime2" class="form-label">Tugash vaqti:</label>
+                    <input type="time" id="endTime2" class="form-control" name="endTime" required />
+                </div>
+                <div class="btn-group w-100" role="group" aria-label="Step buttons">
+                    <button class="btn btn-primary prev-btn mr-3" data-step="step1">Ortga</button>
+                    <button class="btn btn-primary next-btn" data-step="step3" type="button">Oldinga</button>
+                </div>
+
+
+
+            </div>
+            <!-- Education - END -->
+
+            <!-- Work exp - START -->
+            <div class="step-box hidden" id="step3">
+                <h2>Ish tajribasi</h2>
+                <div class="mb-3">
+                    <label for="inputLastJobTime" class="form-label">Ish tajribangizni kiriting:</label
+            >
+            <select
+              name="education"
+              id="inputLastJobTime"
+              class="form-control"
+              onchange="togglePractice()"
+              required
+            >
+              <option value="exp_no">Yo'q</option>
+              <option value="exp_1" selected>0-1 yil</option>
+              <option value="exp_2-5">2-5 yil</option>
+              <option value="exp_5">5 yildan ortiq</option>
+            </select>
+          </div>
+          <div id="lastJobInfo" class="mb-3" style="display: block">
+            <div class="mb-3">
+              <label for="inputComp" class="form-label"
+                >Oldingi ishingizdagi korxona nomi:</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="inputComp"
+                placeholder="MCHJ"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="inputLastJob" class="form-label"
+                >Kim bo'lib ishlaganingiz:</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="inputLastJob"
+                placeholder="Ish bochqaruvchi"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="inputReason" class="form-label"
+                >Bizga qiziqish bildirishingizning sababi:</label
+              >
+              <textarea
+                type="text"
+                class="form-control"
+                id="inputReason"
+                placeholder=""
+                required
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="btn-group w-100" role="group" aria-label="Step buttons">
+            <button class="btn btn-primary prev-btn mr-3" data-step="step2">Ortga</button>
+            <button class="btn btn-primary next-btn" data-step="step4" type="button">Oldinga</button>
+        </div>
+        </div>
+        <!-- Work exp - END -->
+
+        <!-- New work - START -->
+        <div class="step-box hidden" id="step4">
+          <h2>Sizning xohishingiz</h2>
+          <div class="mb-3">
+            <label for="inputNewJob" class="form-label"
+              >Qaysi lavozimda ishlamoqchiligingizni kiriting:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="inputNewJob"
+              placeholder=""
+              required
+            />
+          </div>
+          
+          <div class="mb-3">
+            <label for="priceRange" class="form-label">Oylik maosh:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="minPrice" placeholder="Minimum" aria-label="Minimum" required />
+                        <span class="input-group-text">-</span>
+                        <input type="text" class="form-control" id="maxPrice" placeholder="Maksimum" aria-label="Maksimum" required />
+                    </div>
+                </div>
+                <div class="btn-group w-100" role="group" aria-label="Step buttons">
+                    <button class="btn btn-primary prev-btn mr-3" data-step="step3">Ortga</button>
+                    <button class="btn btn-primary" data-step="step3" id="submit">Tasdiqlash</button>
+                </div>
+            </div>
+            <!-- New work - END -->
+        </form>
+    </div>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <script>
         let tg = window.Telegram.WebApp;
         tg.expand();
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById("multiStepForm");
+            const steps = form.querySelectorAll(".step-box");
+            const nextBtns = form.querySelectorAll(".next-btn");
+            const prevBtns = form.querySelectorAll(".prev-btn");
+
+            nextBtns.forEach(function(btn) {
+                btn.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    const currentStep = btn.closest(".step-box");
+                    const nextStepId = btn.dataset.step;
+                    const nextStep = form.querySelector("#" + nextStepId);
+                    if (validateStep(currentStep)) {
+                        currentStep.classList.remove("active");
+                        currentStep.classList.add("hidden");
+                        nextStep.classList.remove("hidden");
+                        nextStep.classList.add("active");
+                    }
+                });
+            });
+
+            prevBtns.forEach(function(btn) {
+                btn.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    const currentStep = btn.closest(".step-box");
+                    const prevStepId = btn.dataset.step;
+                    const prevStep = form.querySelector("#" + prevStepId);
+                    currentStep.classList.remove("active");
+                    currentStep.classList.add("hidden");
+                    prevStep.classList.remove("hidden");
+                    prevStep.classList.add("active");
+                });
+            });
+        });
+
+        function toggleTimeInputs() {
+            var isStudyingSelect = document.getElementById("inputIsStudying");
+            var timeInputsDiv = document.getElementById("timeInputs");
+            var startTimeInput = document.getElementById("startTime2");
+            var endTimeInput = document.getElementById("endTime2");
+
+            if (isStudyingSelect.value === "ha") {
+                timeInputsDiv.style.display = "block";
+                startTimeInput.required = true;
+                endTimeInput.required = true;
+            } else {
+                timeInputsDiv.style.display = "none";
+                startTimeInput.required = false;
+                endTimeInput.required = false;
+            }
+        }
+
+        function togglePractice() {
+            var practice = document.getElementById("inputLastJobTime");
+            var lastJobInfo = document.getElementById("lastJobInfo");
+            var lastJob = document.getElementById("inputLastJob");
+            var comp = document.getElementById("inputComp");
+            var reason = document.getElementById("inputReason");
+
+            if (practice.value === "exp_no") {
+                lastJobInfo.style.display = "none";
+                lastJob.required = false;
+                lastJobInfo.required = false;
+                comp.required = false;
+                reason.required = false;
+            } else {
+                lastJobInfo.style.display = "block";
+                lastJob.required = true;
+                lastJobInfo.required = true;
+                comp.required = true;
+                reason.required = true;
+            }
+        }
+
+        function validateStep(step) {
+            const inputs = step.querySelectorAll("input, select, textarea");
+            let isValid = true;
+
+            inputs.forEach(function(input) {
+                if (input.required && !input.value.trim()) {
+                    isValid = false;
+                    input.classList.add("is-invalid");
+                } else {
+                    input.classList.remove("is-invalid");
+                }
+            });
+            const inputIsStudying = document.getElementById("inputIsStudying");
+            if (inputIsStudying.required && inputIsStudying.value === "") {
+                inputIsStudying.classList.add("is-invalid");
+                isValid = false;
+            } else {
+                inputIsStudying.classList.remove("is-invalid");
+            }
+
+            return isValid;
+        }
+
+        const inputPhoneNum = document.getElementById("inputPhoneNum");
+
+        inputPhoneNum.addEventListener("input", function(event) {
+            const phoneNumPattern = /^[0-9]{9}$/;
+            const phoneNumber = inputPhoneNum.value;
+
+            if (!phoneNumPattern.test(phoneNumber)) {
+                inputPhoneNum.classList.add("is-invalid");
+            } else {
+                inputPhoneNum.classList.remove("is-invalid");
+            }
+        });
+
+        inputPhoneNum.addEventListener("input", function(event) {
+            let phoneNumber = inputPhoneNum.value.replace(/\D/g, "");
+
+            if (phoneNumber.length < 2) {
+                inputPhoneNum.value = phoneNumber;
+                return;
+            }
+
+            phoneNumber = phoneNumber.replace(
+                /(\d{2})(\d{3})(\d{2})(\d{2})/,
+                "$1 $2 $3 $4"
+            );
+
+            inputPhoneNum.value = phoneNumber;
+        });
 
         let submit = document.getElementById("submit");
 
+        // let userImage = document.getElementById("imageUser")
+        // let imgToStr
+
+        // userImage.addEventListener('change', (e) => {
+        //     const file = e.target.files[0];
+        //     const reader = new FileReader();
+
+        //     reader.onload = (event) => {
+        //         const img = new Image();
+        //         img.onload = () => {
+        //             const canvas = document.createElement('canvas');
+        //             const ctx = canvas.getContext('2d');
+        //             canvas.width = 354;
+        //             canvas.height = 472;
+        //             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        //             imgToStr = canvas.toDataURL('image/jpeg');
+        //         };
+        //         img.src = event.target.result;
+        //     };
+
+        //     reader.readAsDataURL(file);
+        // });
+
         submit.addEventListener("click", () => {
+            let fullname = document.getElementById("inputFirstName").value;
+            let birthDate = document.getElementById("inputBirthDate").value;
+            let location = document.getElementById("inputLocation").value;
+            let phone = document.getElementById("inputPhoneNum").value;
+            let education = document.getElementById("inputSelectEducation").value;
+            let isStudying = document.getElementById("inputIsStudying").value;
+            let startTime = document.getElementById("startTime2").value;
+            let endTime = document.getElementById("endTime2").value;
+            let experience = document.getElementById("inputLastJobTime").value;
+            let company = document.getElementById("inputComp").value;
+            let lastJob = document.getElementById("inputLastJob").value;
+            let reason = document.getElementById("inputReason").value;
+            let newJob = document.getElementById("inputNewJob").value;
+            let minPrice = document.getElementById("minPrice").value;
+            let maxPrice = document.getElementById("maxPrice").value;
+
             let data = {
-                "@type": "personalDetails",
-                "fullname": "John Doe",
-                "birthDate": "1990-05-15",
-                "location": "New York, USA",
-                "phone": "+1234567890",
-                "education": "Bachelor's Degree in Computer Science",
-                "isStudying": false,
-                "startTime": "2015-07-01",
-                "endTime": "2022-09-30",
-                "experience": "Senior Software Engineer",
-                "company": "Tech Solutions Inc.",
-                "lastJob": "Software Developer",
-                "reason": "Seeking career growth",
-                "newJob": "Lead Software Engineer",
-                "minPrice": 50000,
-                "maxPrice": 80000
+                fullname: fullname,
+                birthDate: birthDate,
+                location: location,
+                phone: phone,
+                education: education,
+                isStudying: isStudying,
+                startTime: startTime,
+                endTime: endTime,
+                experience: experience,
+                company: company,
+                lastJob: lastJob,
+                reason: reason,
+                newJob: newJob,
+                minPrice: minPrice,
+                maxPrice: maxPrice
             };
-            tg.sendData(data);
+            tg.sendData(JSON.stringify(data));
             tg.close();
-        });
+        })
     </script>
 </body>
+
+</html>
 
 </html>
