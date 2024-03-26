@@ -26,7 +26,6 @@
             background-color: white;
             color: black;
             padding-top: 20px;
-            /* Add some padding to separate content from the top */
         }
         
         .logo-text-container {
@@ -36,9 +35,7 @@
         
         .logo-text-container img {
             width: 100px;
-            /* Adjust size as needed */
             height: auto;
-            /* Maintain aspect ratio */
             vertical-align: middle;
             margin-right: 10px;
         }
@@ -46,10 +43,11 @@
 </head>
 
 <body>
+
     <div class="container">
         <div class="logo-text-container">
             <img src="logo_osiyo.png" alt="Logo" />
-            <h1>Osiyo HR</h1>
+            <!-- <h1>Osiyo HR</h1> -->
         </div>
         <form id="multiStepForm" form="form">
             <!-- Personal info - START -->
@@ -57,10 +55,10 @@
                 <h2>Shaxsiy ma'lumot :</h2>
                 <div class="mb-3">
                     <label for="inputFirstName" class="form-label">FIO:</label>
-                    <input type="text" class="form-control" id="inputFirstName" placeholder="Familiya Ism Otangiz ismi" required />
+                    <input type="text" class="form-control" id="inputFirstName" placeholder="Familiya Ism Otangizni ismi" required />
                 </div>
                 <div class="mb-3">
-                    <label for="inputBirthDate" class="form-label">Tugulgan sanangiz:</label
+                    <label for="inputBirthDate" class="form-label">Tug'ulgan sanangiz:</label
             >
             <input
               type="date"
@@ -70,10 +68,17 @@
             />
           </div>
           <div class="mb-3">
-            <label for="inputLocation" class="form-label">Manzilingiz:</label>
+                    <label for="inputLocation" class="form-label">Manzilingiz:</label>
                     <input type="text" class="form-control" id="inputLocation" placeholder="Shahar, ko'cha, uy, xonadon " required />
                 </div>
-
+                <!-- <div class="mb-3">
+                    <label for="userImage" class="form-label">Rasmingizni yuklang:</label>
+                    <div class="input-group">
+                        <input type="file" class="form-control" id="userImage" accept=".jpg, .jpeg, .png" required>
+                        <div class="input-group-append">
+                        </div>
+                    </div>
+                </div> -->
                 <div class="mb-3">
                     <label for="inputPhoneNum" class="form-label">Tel:</label>
                     <div class="input-group">
@@ -81,12 +86,10 @@
                         <input type="tel" class="form-control" id="inputPhoneNum" maxlength="12" pattern="[0-9]{2} [0-9]{3} [0-9]{2} [0-9]{2}" placeholder="99 999 99 99" required />
                     </div>
                     <div class="invalid-feedback">
-                        Please provide a valid phone number (e.g., 99 999 99 99).
+                        Iltimos telifon raqamingizni to'gri kiriting (99 999 99 99).
                     </div>
                 </div>
-                <button class="btn btn-primary next-btn" data-step="step2" type="button">
-            Next
-          </button>
+                <button class="btn btn-primary next-btn w-100" data-step="step2" type="button">Oldinga</button>
             </div>
             <!-- Personal info - END -->
 
@@ -99,7 +102,7 @@
             <select name="education" id="inputSelectEducation" class="form-control">
               <option value="O'rta">O'rta (maktab)</option>
               <option value="O'rta-maxsus (litsey | kollej)" selected>O'rta-maxsus (litsey | kollej)</option>
-              <option value="Oliy (bakalavriat)">Oliy (bakalavriat)</option>
+              <option value="Oliy (bakalavr)">Oliy (bakalavr)</option>
             </select>
           </div>
           <div class="mb-3">
@@ -115,21 +118,19 @@
               <option value="ha" selected>Ha</option>
               <option value="yo'q">Yo'q</option>
             </select>
-          </div>
-          <div id="timeInputs" class="mb-3" style="display: block">
-            <label for="startTime2">Boshlanish vaqti:</label>
-                    <input type="time" id="startTime2" name="startTime" required />
-                    <br />
-                    <br />
-                    <label for="endTime2">Togash vaqti:</label>
-                    <input type="time" id="endTime2" name="endTime" required />
+          </div><div id="timeInputs" class="mb-3" style="display: block">
+            <label for="startTime2" class="form-label">Boshlanish vaqti:</label>
+                    <input type="time" id="startTime2" class="form-control" name="startTime" required />
+                    <label for="endTime2" class="form-label">Tugash vaqti:</label>
+                    <input type="time" id="endTime2" class="form-control" name="endTime" required />
                 </div>
-                <button class="btn btn-primary prev-btn mr-3" data-step="step1">
-            Previous
-          </button>
-                <button class="btn btn-primary next-btn" data-step="step3" type="button">
-            Next
-          </button>
+                <div class="btn-group w-100" role="group" aria-label="Step buttons">
+                    <button class="btn btn-primary prev-btn mr-3" data-step="step1">Ortga</button>
+                    <button class="btn btn-primary next-btn" data-step="step3" type="button">Oldinga</button>
+                </div>
+
+
+
             </div>
             <!-- Education - END -->
 
@@ -153,7 +154,7 @@
             </select>
           </div>
           <div id="lastJobInfo" class="mb-3" style="display: block">
-            <div class="mb-3">
+            <div class="mb-3">tug'ilgan kun:
               <label for="inputComp" class="form-label"
                 >Oldingi ishingizdagi korxona nomi:</label
               >
@@ -179,7 +180,7 @@
             </div>
             <div class="mb-3">
               <label for="inputReason" class="form-label"
-                >Bushashingiz sababi:</label
+                >Bizga qiziqish bildirishingizning sababi:</label
               >
               <textarea
                 type="text"
@@ -191,25 +192,19 @@
             </div>
           </div>
 
-          <button class="btn btn-primary prev-btn mr-3" data-step="step2">
-            Previous
-          </button>
-          <button
-            class="btn btn-primary next-btn"
-            data-step="step4"
-            type="button"
-          >
-            Next
-          </button>
+          <div class="btn-group w-100" role="group" aria-label="Step buttons">
+            <button class="btn btn-primary prev-btn mr-3" data-step="step2">Ortga</button>
+            <button class="btn btn-primary next-btn" data-step="step4" type="button">Oldinga</button>
+        </div>
         </div>
         <!-- Work exp - END -->
 
         <!-- New work - START -->
         <div class="step-box hidden" id="step4">
-          <h2>Sizning hohishingiz</h2>
+          <h2>Sizning xohishingiz</h2>
           <div class="mb-3">
             <label for="inputNewJob" class="form-label"
-              >Qaysi lavozimga ishlamoqchiligingizni kiriting:</label
+              >Qaysi lavozimda ishlamoqchiligingizni kiriting:</label
             >
             <input
               type="text"
@@ -219,6 +214,7 @@
               required
             />
           </div>
+          
           <div class="mb-3">
             <label for="priceRange" class="form-label">Oylik maosh:</label>
                     <div class="input-group">
@@ -227,10 +223,10 @@
                         <input type="text" class="form-control" id="maxPrice" placeholder="Maksimum" aria-label="Maksimum" required />
                     </div>
                 </div>
-                <button class="btn btn-primary prev-btn mr-3" data-step="step3">
-            Previous
-          </button>
-                <button id="submit" class="btn btn-primary">Tasdiqlash</button>
+                <div class="btn-group w-100" role="group" aria-label="Step buttons">
+                    <button class="btn btn-primary prev-btn mr-3" data-step="step3">Ortga</button>
+                    <button class="btn btn-primary" data-step="step3" id="submit">Tasdiqlash</button>
+                </div>
             </div>
             <!-- New work - END -->
         </form>
@@ -342,7 +338,7 @@
             const phoneNumPattern = /^[0-9]{9}$/;
             const phoneNumber = inputPhoneNum.value;
 
-            if (!phoneNumPattern.test(phoneNumber)) {
+            if (!phoneNumPattern.test(phoneNumber) && phoneNumber.length == 9) {
                 inputPhoneNum.classList.add("is-invalid");
             } else {
                 inputPhoneNum.classList.remove("is-invalid");
