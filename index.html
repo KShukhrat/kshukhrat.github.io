@@ -528,6 +528,7 @@
     let submit = document.getElementById("submit");
 
     submit.addEventListener("click", () => {
+        console.log('submitted')
         let fullname = document.getElementById("inputFirstName").value;
         let birthDate = document.getElementById("inputBirthDate").value;
         let location = document.getElementById("inputLocation").value;
@@ -565,7 +566,8 @@
             languages: languages
         };
 
-        tg.sendData(JSON.stringify(data));
+        // tg.sendData(JSON.stringify(data));
+        tg.sendData(data);
         tg.close();
     })
 </script>
