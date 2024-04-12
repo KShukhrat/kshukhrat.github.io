@@ -7,7 +7,7 @@
     <title>Osiyo HR</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <style>
-        /*.step-box {
+        .step-box {
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 20px;
@@ -20,7 +20,7 @@
 
         .step-box.hidden {
             display: none;
-        }*/
+        }
 
         body {
             background-color: white;
@@ -260,6 +260,37 @@
             </div>
         </div>
         <!-- Laguage knowledges - END -->
+
+        <!-- Computer knowledges - START -->
+            <div class="step-box hidden" id="step5">
+        <h2>Kompyuter savodxonligi</h2>
+        <div id="selectedProgrammingLanguages">
+            <div class="row align-items-center programming-language-row mb-3">
+                <div class="col-md-6 ">
+                    <div class="form-group ">
+                        <select name="programmingLanguageLevel " id="programmingLanguageLevel" class="form-control programming-language-level " required>
+                                <option value="" disabled selected hidden>Kompyuterni bilish darajangiz</option>
+                                <option value="No">Malakasiz</option>
+                                <option value="Beginner">Foydalanuvchi</option>
+                                <option value="Intermediate">Tajribali foydalanuvchi</option>
+                                <option value="Advance">Dasturchi</option>
+                            </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="programmes" class="form-label">Qaysi dasturlarni bilasiz:</label>
+                        <textarea type="text" class="form-control programming-language-name " id="programmes" placeholder="Word, Excel, PowerPoint ..." required></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-group w-100 " role="group " aria-label="Step buttons ">
+            <button class="btn btn-primary prev-btn mr-3 " data-step="step3 ">Previous</button>
+            <button class="btn btn-primary next-btn " data-step="step6 " type="button ">Next</button>
+        </div>
+    </div>
+        <!-- Computer knowledges - END -->
 
         <!-- New work - START -->
         <div class="step-box hidden" id="step6">
@@ -530,6 +561,8 @@
         let minPrice = document.getElementById("minPrice").value;
         let maxPrice = document.getElementById("maxPrice").value;
         let languages = gatherLanguageData();
+        let pc_lvl = document.getElementById("programmingLanguageLevel").value;
+        let pc_exp = document.getElementById("programmes").value;
 
 
         let data = {
@@ -548,7 +581,9 @@
             newJob: newJob,
             minPrice: minPrice,
             maxPrice: maxPrice,
-            languages: languages
+            languages: languages,
+            pc_lvl: pc_lvl,
+            pc_exp: pc_exp
         };
         tg.sendData(JSON.stringify(data));
         tg.close();
