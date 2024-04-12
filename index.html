@@ -271,10 +271,10 @@
         });
 
         function toggleTimeInputs() {
-            var isStudyingSelect = document.getElementById("inputIsStudying");
-            var timeInputsDiv = document.getElementById("timeInputs");
-            var startTimeInput = document.getElementById("startTime2");
-            var endTimeInput = document.getElementById("endTime2");
+            let isStudyingSelect = document.getElementById("inputIsStudying");
+            let timeInputsDiv = document.getElementById("timeInputs");
+            let startTimeInput = document.getElementById("startTime2");
+            let endTimeInput = document.getElementById("endTime2");
 
             if (isStudyingSelect.value === "ha") {
                 timeInputsDiv.style.display = "block";
@@ -288,11 +288,11 @@
         }
 
         function togglePractice() {
-            var practice = document.getElementById("inputLastJobTime");
-            var lastJobInfo = document.getElementById("lastJobInfo");
-            var lastJob = document.getElementById("inputLastJob");
-            var comp = document.getElementById("inputComp");
-            var reason = document.getElementById("inputReason");
+            let practice = document.getElementById("inputLastJobTime");
+            let lastJobInfo = document.getElementById("lastJobInfo");
+            let lastJob = document.getElementById("inputLastJob");
+            let comp = document.getElementById("inputComp");
+            let reason = document.getElementById("inputReason");
 
             if (practice.value === "exp_no") {
                 lastJobInfo.style.display = "none";
@@ -338,7 +338,7 @@
             const phoneNumPattern = /^[0-9]{9}$/;
             const phoneNumber = inputPhoneNum.value;
 
-            if (!phoneNumPattern.test(phoneNumber) && phoneNumber.length == 9) {
+            if (!phoneNumPattern.test(phoneNumber) && phoneNumber.length === 9) {
                 inputPhoneNum.classList.add("is-invalid");
             } else {
                 inputPhoneNum.classList.remove("is-invalid");
