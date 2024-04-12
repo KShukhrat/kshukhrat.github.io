@@ -439,39 +439,25 @@
     }
 
     function gatherLanguageData() {
-        const languageData = [];
-
-        const languageRows = document.querySelectorAll(".language-row");
-
-        languageRows.forEach(function (row, index) {
-            const languageName = row.querySelector(`#language_${index}`).value;
-            const languageLevel = row.querySelector(`#languageLevel_${index}`).value;
-
-            const readCheckbox = row.querySelector(`#readCheckbox_${index}`);
-            const writeCheckbox = row.querySelector(`#writeCheckbox_${index}`);
-            const speakCheckbox = row.querySelector(`#speakCheckbox_${index}`);
-
-            const languageSkills = [];
-
-            if (readCheckbox.checked) {
-                languageSkills.push("Reading");
-            }
-            if (writeCheckbox.checked) {
-                languageSkills.push("Writing");
-            }
-            if (speakCheckbox.checked) {
-                languageSkills.push("Speaking");
-            }
-
-            languageData.push({
-                name: languageName,
-                level: languageLevel,
-                skills: languageSkills
-            });
+    const languageData = [];
+    const languageRows = document.querySelectorAll('.language-row');
+    languageRows.forEach(function(row) {
+        const languageName = row.querySelector('.language-name').value;
+        const languageLevel = row.querySelector('.language-level').value;
+        const checkboxes = row.querySelectorAll('.form-check-input:checked');
+        const languageSkills = Array.from(checkboxes).map(function(checkbox) {
+            return checkbox.value;
         });
+        const language = {
+            name: languageName,
+            level: languageLevel,
+            skills: languageSkills
+        };
+        languageData.push(language);
+    });
+    return languageData;
+}
 
-        return languageData;
-    }
 
     function validateStep(step) {
         const inputs = step.querySelectorAll("input, select, textarea");
@@ -528,7 +514,6 @@
     let submit = document.getElementById("submit");
 
     submit.addEventListener("click", () => {
-        console.log('submitted')
         let fullname = document.getElementById("inputFirstName").value;
         let birthDate = document.getElementById("inputBirthDate").value;
         let location = document.getElementById("inputLocation").value;
@@ -565,9 +550,8 @@
             maxPrice: maxPrice,
             languages: languages
         };
-
         tg.sendData(JSON.stringify(data));
-        window.close();
+        tg.close();
     })
 </script>
 </body>
