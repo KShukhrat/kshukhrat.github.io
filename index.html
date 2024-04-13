@@ -262,34 +262,36 @@
         <!-- Laguage knowledges - END -->
 
         <!-- Computer knowledges - START -->
-            <div class="step-box hidden" id="step5">
-        <h2>Kompyuter savodxonligi</h2>
-        <div id="selectedProgrammingLanguages">
-            <div class="row align-items-center programming-language-row mb-3">
-                <div class="col-md-6 ">
-                    <div class="form-group ">
-                        <select name="programmingLanguageLevel " id="programmingLanguageLevel" class="form-control programming-language-level " required>
+        <div class="step-box hidden" id="step5">
+            <h2>Kompyuter savodxonligi</h2>
+            <div id="selectedProgrammingLanguages">
+                <div class="row align-items-center programming-language-row mb-3">
+                    <div class="col-md-6 ">
+                        <div class="form-group ">
+                            <select name="programmingLanguageLevel " id="programmingLanguageLevel"
+                                    class="form-control programming-language-level " required>
                                 <option value="" disabled selected hidden>Kompyuterni bilish darajangiz</option>
                                 <option value="Malakasiz">Malakasiz</option>
                                 <option value="Foydalanuvchi">Foydalanuvchi</option>
                                 <option value="Tajribali foydalanuvchi">Tajribali foydalanuvchi</option>
                                 <option value="Dasturchi">Dasturchi</option>
                             </select>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="programmes" class="form-label">Qaysi dasturlarni bilasiz:</label>
-                        <textarea type="text" class="form-control programming-language-name " id="programmes" placeholder="Word, Excel, PowerPoint ..." required></textarea>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="programmes" class="form-label">Qaysi dasturlarni bilasiz:</label>
+                            <textarea type="text" class="form-control programming-language-name " id="programmes"
+                                      placeholder="Word, Excel, PowerPoint ..." required></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="btn-group w-100 " role="group " aria-label="Step buttons ">
+                <button class="btn btn-primary prev-btn mr-3 " data-step="step4">Ortga</button>
+                <button class="btn btn-primary next-btn " data-step="step6 " type="button ">Oldinga</button>
+            </div>
         </div>
-        <div class="btn-group w-100 " role="group " aria-label="Step buttons ">
-            <button class="btn btn-primary prev-btn mr-3 " data-step="step3 ">Previous</button>
-            <button class="btn btn-primary next-btn " data-step="step6 " type="button ">Next</button>
-        </div>
-    </div>
         <!-- Computer knowledges - END -->
 
         <!-- New work - START -->
@@ -319,7 +321,7 @@
                 </div>
             </div>
             <div class="btn-group w-100" role="group" aria-label="Step buttons">
-                <button class="btn btn-primary prev-btn mr-3" data-step="step3">Ortga</button>
+                <button class="btn btn-primary prev-btn mr-3" data-step="step5">Ortga</button>
                 <button class="btn btn-primary" data-step="step6" id="submit">Tasdiqlash</button>
             </div>
         </div>
@@ -470,24 +472,24 @@
     }
 
     function gatherLanguageData() {
-    const languageData = [];
-    const languageRows = document.querySelectorAll('.language-row');
-    languageRows.forEach(function(row) {
-        const languageName = row.querySelector('.language-name').value;
-        const languageLevel = row.querySelector('.language-level').value;
-        const checkboxes = row.querySelectorAll('.form-check-input:checked');
-        const languageSkills = Array.from(checkboxes).map(function(checkbox) {
-            return checkbox.value;
+        const languageData = [];
+        const languageRows = document.querySelectorAll('.language-row');
+        languageRows.forEach(function (row) {
+            const languageName = row.querySelector('.language-name').value;
+            const languageLevel = row.querySelector('.language-level').value;
+            const checkboxes = row.querySelectorAll('.form-check-input:checked');
+            const languageSkills = Array.from(checkboxes).map(function (checkbox) {
+                return checkbox.value;
+            });
+            const language = {
+                name: languageName,
+                level: languageLevel,
+                skills: languageSkills
+            };
+            languageData.push(language);
         });
-        const language = {
-            name: languageName,
-            level: languageLevel,
-            skills: languageSkills
-        };
-        languageData.push(language);
-    });
-    return languageData;
-}
+        return languageData;
+    }
 
 
     function validateStep(step) {
